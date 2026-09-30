@@ -1,4 +1,14 @@
-# Manuscript Analysis Scripts
+# Necromass Manuscript Analysis Code
+
+## September 2026 revision
+
+Start with [revision_2026_09/README.md](revision_2026_09/README.md) for corrected-metabolite, endpoint-reference, MOFA and retention analyses. Existing root-level scripts are preserved as historical workflows. The notes below describe the earlier July collection and are superseded where the revision documentation differs.
+
+This is a source-code release, not a self-contained data release or a validated one-command pipeline. Inputs and absolute paths must be configured before execution. No experimental data, manuscript documents or private reviewer credentials are included in the revision bundle. See the manuscript data-availability statement for deposited data.
+
+The corrected MOFA fitting scripts have now been located and are included; the historical statement below that they were unavailable is no longer current. The repository also contains previously deposited RNA-seq preprocessing scripts at its root. No license has been added; licensing remains an author decision.
+
+## Historical July collection
 
 This folder collects the manuscript-specific analysis and figure-generation scripts located in `/Users/mingfeichen/Manuscript`.
 
