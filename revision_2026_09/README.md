@@ -25,7 +25,7 @@ Before running, inspect each script's input/output constants, replace them with 
 
 The Figure 1 raw-processing audit distinguishes recovered MZmine batch XMLs from the unavailable raw `.mzML` files and final filtering/merge workflow. Downstream plots are reproducible from processed Supplementary File S1, but raw-to-matrix regeneration is incomplete. The available matrix also yields PCoA variance labels different from the prior artwork; see the audit before reusing its labels.
 
-The verified MOFA renderer imports `reproduce_panel.py` at its original workspace path; `mofa/original_plot_helpers.py` is that source. Restore it at the manifest path or update `SOURCE` in the renderer. The renderer output directory must contain the audit CSV exports. The helper reads annotations at import time.
+The verified MOFA renderer uses the bundled `mofa/original_plot_helpers.py`; configure its helper and input/output paths for the local workspace. The renderer output directory must contain the audit CSV exports. The helper reads annotations at import time.
 
 Untreated mid/late contrasts use 0 h; stress endpoints use the corresponding late untreated reference in the endpoint scripts. Direct organism contrasts match conditions. MOFA pairs are selected for treatment separation, not total variance; factor numbers are organism-specific.
 
@@ -43,6 +43,6 @@ Python dependencies are listed in `requirements.txt` without version pinning. Th
 
 ## Verification and limitations
 
-Packaging checks cover Python/R syntax, copied-source checksums and candidate credential patterns. The scientific analyses were not rerun end-to-end during packaging. Absolute paths, external data and intermediate-file dependencies remain. The release excludes workbooks, models, private reviewer credentials, cover letters and manuscript files. Figures not represented above may require historical root scripts or source artwork. Downstream scripts do not replace raw LC-MS/MS or raw proteomics processing pipelines.
+Packaging checks cover Python/R syntax, copied-source checksums and candidate credential patterns. The scientific analyses were not rerun end-to-end during packaging. Absolute paths, external data and intermediate-file dependencies remain. The release excludes workbooks, models, private reviewer credentials, cover letters and manuscript files. The included scripts cover the current manuscript figures and selected supporting analyses; they do not replace raw LC–MS/MS, RNA-seq or proteomics processing pipelines.
 
 References: Bates et al. (2015), doi:10.18637/jss.v067.i01; Hoerl & Kennard (1970), doi:10.1080/00401706.1970.10488634; Roberts et al. (2017), doi:10.1111/ecog.02881.
