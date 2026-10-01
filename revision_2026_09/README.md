@@ -2,7 +2,7 @@
 
 ## Provenance and execution
 
-`SOURCE_MANIFEST.csv` records the original workspace-relative location and SHA-256 of every copied source. Scripts are retained verbatim. The original workspace root was `/Users/mingfeichen/Manuscript`; many inputs reside under `/Users/mingfeichen`.
+`SOURCE_MANIFEST.csv` records source locations and SHA-256 hashes for bundled files. Most analysis scripts are retained verbatim; Figure 1 utilities were parameterized for portable input/output paths, and the Gower PCoA script was reconstructed from the processed matrix. The original workspace root was `/Users/mingfeichen/Manuscript`; many inputs reside under `/Users/mingfeichen`.
 
 Before running, inspect each script's input/output constants, replace them with local paths, and use a new output directory. Do not execute the entire folder indiscriminately: some scripts are sequential revisions or produce overlapping outputs. Some MOFA scripts automatically install packages and contain exploratory postprocessing; review them before execution. Scripts called through `source()` or imports must also be available at their configured paths. This is not a turnkey workflow or a locked historical environment.
 
@@ -10,7 +10,7 @@ Before running, inspect each script's input/output constants, replace them with 
 
 | Analysis | Entry points | Required inputs |
 |---|---|---|
-| Figure 1 overlap | `analysis/make_species_specific_untargeted_overlap.R` | Merged positive/negative supplementary feature workbook |
+| Figure 1 and untargeted PCoA | `figure1/` | Processed 2,787-feature, 36-sample Supplementary File S1 workbook; see `figure1/RAW_PROCESSING_PROVENANCE.md` |
 | Endpoint metabolite contrasts | `analysis/recompute_endpoint_reference_comparison.R` or `.py` | Corrected targeted and processed untargeted matrices; inspect each implementation before choosing |
 | Figure 2 targeted profiles | `analysis/make_corrected_necromass_fig2.R` | Corrected necromass workbook and contrast outputs; verify reference settings against endpoint script |
 | Targeted PERMANOVA | `analysis/recompute_corrected_targeted_permanova.R` | Corrected targeted workbook and sample grouping |
@@ -22,6 +22,8 @@ Before running, inspect each script's input/output constants, replace them with 
 | Sediment model | `retention/rebuild_corrected_mineral_prediction.R` | `New_metabolites_corrected.xlsx`, sheet `Supplememntary Table Y Mineral` |
 | Cross-sorbent S10 | `retention/build_all_sorbent_predictions.R` | Sediment output CSV, `metabolite_adsorption_merged_long.csv`, descriptors in `Necromass Supplementary Table.xlsx` |
 | Supplementary assembly | `figures/` | Original figure PDFs/images and caption source script |
+
+The Figure 1 raw-processing audit distinguishes recovered MZmine batch XMLs from the unavailable raw `.mzML` files and final filtering/merge workflow. Downstream plots are reproducible from processed Supplementary File S1, but raw-to-matrix regeneration is incomplete. The available matrix also yields PCoA variance labels different from the prior artwork; see the audit before reusing its labels.
 
 The verified MOFA renderer imports `reproduce_panel.py` at its original workspace path; `mofa/original_plot_helpers.py` is that source. Restore it at the manifest path or update `SOURCE` in the renderer. The renderer output directory must contain the audit CSV exports. The helper reads annotations at import time.
 

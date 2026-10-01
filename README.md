@@ -26,7 +26,7 @@ This folder collects the manuscript-specific analysis and figure-generation scri
 - Figure 3, pathway-level transcriptome and exometabolome comparison: scripts in `02_pathway_integration/`.
 - Figure 4, MOFA2 and cross-omic modules: scripts in `03_mofa_multiomics/`.
 - Figure 5, targeted metabolite retention or adsorption: scripts in `04_adsorption/`.
-- Figure 1, untargeted LC-MS/MS feature processing and ordination: the final raw-processing script was not found in the local manuscript workspace.
+- Figure 1, untargeted downstream figures and ordination: see `revision_2026_09/figure1/`; raw-to-matrix processing remains incomplete.
 
 ## Transcriptome-specific scripts
 
@@ -34,9 +34,9 @@ The transcriptome-related downstream scripts are included in `02_pathway_integra
 
 ## Reproducibility notes
 
-These scripts were copied without changing their contents. Several scripts use absolute paths such as `/Users/mingfeichen/Manuscript` or `/Users/mingfeichen`, and some expect Excel workbooks, CSV/TSV files, RDS objects, or intermediate outputs that are not included here. They may therefore require path edits and the corresponding input files before execution.
+Most historical scripts were copied without changing their contents. Figure 1 utilities were parameterized for portable input/output paths, and the Gower PCoA script was reconstructed from the processed matrix. Several older scripts use absolute paths such as `/Users/mingfeichen/Manuscript` or `/Users/mingfeichen`, and some expect workbooks, CSV/TSV files, RDS objects, or intermediate outputs not included here.
 
-The local workspace did not contain the complete upstream scripts for raw LC-MS/MS processing, RNA-seq preprocessing, proteomics processing, or the full MOFA2 model-fitting step. The scripts here primarily reproduce downstream analyses and figure generation from already processed inputs.
+The Figure 1 audit recovered MZmine 3.7.2 positive/negative batch XMLs from the matching NECPATH3 acquisition and added a Gower PCoA generator for the processed matrix. Raw `.mzML` data and the authoritative final filtering/ion-mode merge script remain unavailable, so raw-to-matrix regeneration is incomplete. See `revision_2026_09/figure1/RAW_PROCESSING_PROVENANCE.md`. Other upstream LC-MS/MS, RNA-seq, and proteomics components may also remain incomplete.
 
 The MOFA2 model-fitting script and saved model object were also not found. The available MOFA2 scripts are downstream visualization and loading-analysis scripts. See `03_mofa_multiomics/MOFA2_FITTING_STATUS.md` for the missing reproducibility components.
 
